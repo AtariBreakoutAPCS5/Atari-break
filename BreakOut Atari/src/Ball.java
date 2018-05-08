@@ -14,6 +14,12 @@ public class Ball {
 	public void draw(Graphics g){
 		pad.getX();
 	}
+	public int getX(){
+		return x_value;
+	}
+	public int getY(){
+		return y_value;
+	}
 	
 
 }
