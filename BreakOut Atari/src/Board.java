@@ -8,9 +8,12 @@ import java.util.ArrayList;
  */
 
 public class Board  {
+	int padX = 200;
+	int padY = 525;
 
 	private int y_value;
 	private Color col;
+	public Paddle paddle = new Paddle(padX,padY);
 
 	Color[] colors = new Color[]{Color.blue, Color.green, Color.yellow,Color.orange, Color.red};
 
@@ -19,7 +22,7 @@ public class Board  {
 	public Board(){
 
 		y_value=50;
-		int x_value = 0;
+		int x_value = 5;
 
 
 		//*****This is loop to put all the bricks into colors*****//
@@ -31,13 +34,14 @@ public class Board  {
 				blocks.add(brick);
 				x_value+=50; // This value will add on to the x value
 			}
-			x_value = 0;
+			x_value = 5;
 			y_value += 50;
 		}
 	}
 
 	public void draw(Graphics g){
 		//****This Draws the bricks****//
+		paddle.draw(g);
 		for(int i = 0;i < blocks.size();i++ ){
 			blocks.get(i).draw(g);
 		}

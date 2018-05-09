@@ -1,20 +1,32 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Paddle {
-	public int x;
-	public int y;
+	private int x_value;
+	private int y_value;
+	
+	private int  width = 70;
+	private int  height = 15;
 	public Paddle(int x, int y){
-		this.x = x;
-		this.y = y;
+		x_value = x;
+		y_value = y;
 	}
 	public void draw(Graphics g){
-		g.fillRect(x, y, 50, 10);
+		g.setColor(Color.BLACK);
+		g.fillRect(x_value, y_value,width , height);
 	}
 	
 	public int getX(){
-		return x;
+		return x_value;
 	}
 	public int getY(){
-		return y;
+		return y_value;
+	}
+	public void moveLeft() {
+		// TODO Auto-generated method stub
+		x_value--;
+	}
+	public void moveRight(){
+		x_value++;
 	}
 }
