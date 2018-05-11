@@ -32,7 +32,7 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 	Paddle pad = new Paddle (padX,padY); // are these truly needed if they are in board?
 	Ball ball = new Ball(padX, padY);
 	Board board = new Board();
-	int speed = 5;
+	int speed = 3;
 	private int width = 450;
 	private int height = 600;
 	private Timer ticker = new Timer(speed, null);
@@ -76,6 +76,9 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 			
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+
+			pad.x_value += pad.dx;
+			
 			if(dir == true) {
 			ball.UP();
 			}
@@ -94,7 +97,7 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 				
 				dir =true;
 				
-				
+			
 }
 			if(ball.getY()>620) {
 				ball.reset();
@@ -170,7 +173,30 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 			}
 		});
 		panel.requestFocusInWindow();
+		
+		panel.getInputMap().put(KeyStroke.getKeyStroke("released RIGHT"),"Rright");
+		panel.getActionMap().put("Rright",new AbstractAction(){
+			public void actionPerformed(ActionEvent e) {
+				// what do you want to do when the left arrow is pressed?
+				pad.release();
+				
+				System.out.println("You have released RIGHT!" + pad.getX());
+				panel.repaint();
+			}
+		});
+		panel.requestFocusInWindow();
 
+		panel.getInputMap().put(KeyStroke.getKeyStroke("released LEFT"),"Rleft");
+		panel.getActionMap().put("Rleft",new AbstractAction(){
+			public void actionPerformed(ActionEvent e) {
+				// what do you want to do when the left arrow is pressed?
+				pad.release();
+				
+				System.out.println("You have released LEFT!" + pad.getX());
+				panel.repaint();
+			}
+		});
+		panel.requestFocusInWindow();
 	}
 
 }
