@@ -30,10 +30,11 @@ public class Ball {
  	    //Shape rectangle = new Rectangle(40, 0, 50, 30);
  	   // g2d.setColor( Color.BLUE );
  	   // g2d.fill(rectangle);
- 	    Shape oval = new Ellipse2D.Double(x_value,y_value-50, 50, 50); 
+ 	    Shape oval = new Ellipse2D.Double(x_value,y_value-20, 20, 20); 
  	    g2d.setColor( Color.GREEN );
  	    g2d.fill( oval );
  	    g2d.dispose();
+
  	}
 
 	public Shape showyourself() {
