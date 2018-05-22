@@ -23,6 +23,31 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import javax.swing.event.*;
 
+import java.awt.Color;
+import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
+import javax.swing.AbstractAction;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import javax.swing.Timer;
+import javax.swing.UIManager;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+import javax.swing.event.*;
+
 public class GamePanel  { // gamepanel doens't need to be a Jpanel
 	JFrame frame = new JFrame("Breakout");
 	private JPanel panel;
@@ -38,6 +63,7 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 	private Timer ticker = new Timer(speed, null);
 	private boolean moving ;
 	private boolean dir = true;
+
 
 
 
@@ -76,24 +102,33 @@ public class GamePanel  { // gamepanel doens't need to be a Jpanel
 			
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			if(dir == true) {
-			ball.UP();
+			
+			int brickx =0;
+//			if(dir == true) {
+//		ball.UP();
+//			}
+//			if(dir == false) {
+//				ball.DOWN();
+//				frame.repaint();
+//			}
+			if(dir == true){
+				ball.move();
+				frame.repaint();
 			}
-			if(dir == false) {
-				ball.DOWN();
-			//	frame.repaint();
+			if(dir == false){
+				ball.move(brickx);
 			}
 			
 			for (int g=0; g<board.blocks.size();g++) {
 				if ((testIntersection(ball.showyourself(),board.blocks.get(g).showyourself()))) {
+					brickx = board.blocks.get(g).get_X_Value();
 					dir = false;
  				}
 			}
 			
 			if ((testIntersection(ball.showyourself(),pad.showyourself()))){
-				
-				dir =true;
-				
+				dir = true;
+				ball.move();
 				
 }
 			if(ball.getY()>620) {
