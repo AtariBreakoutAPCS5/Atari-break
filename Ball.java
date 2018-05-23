@@ -13,11 +13,7 @@ public class Ball {
 	Paddle pad;
 	private boolean inPlay;
 	Ball ball;
-	public int originalx,originaly;
-	public int angleX =-1, angleY = -1;
-	int w = 20, h = 20;
-	
-
+	int originalx,originaly;
 	
 
 	
@@ -27,56 +23,6 @@ public class Ball {
 		originalx = x;
 		originaly = y;
 	
-	}
-	public void move(){
-		
-		/*
-		 * The move method tells the change in value for x and y as the ball is moving from one area to another. 
-		 */
-		
-		angleX = 1;
-		angleY = -1;
-		int constant = 20;
-		if(x_value + angleX < 0){
-			angleX = 1;
-		}
-		else if(x_value + angleX> 450 -constant){
-			angleX = 1;
-		}
-		 if(y_value + angleY<0){
-			angleY = 1;
-			System.out.println("00");
-		}
-		 if(y_value ==0){
-//			 System.out.println("00");
-			
-		}
-		
-		x_value = x_value+ angleX;
-		y_value = y_value + angleY;
-		
-	
-}
-	public void move(int x){
-		int constant = 20;
-		
-		angleX = 1;
-		angleY = -1;
-		if(x_value + angleX < 0){
-			angleX = 1;
-		}
-		else if(x_value + angleX> x -constant){
-			angleX = -1;
-		}
-		else if(y_value + angleY<0){
-			angleY = 1;
-		}
-		
-		
-		
-		x_value = x_value+ angleX;
-		y_value = y_value + angleY;
-		
 	}
 	
 	public void draw(Graphics g){
@@ -101,7 +47,9 @@ public class Ball {
 		y_value++;
 	}
 
-	
+	public void Move() {
+		
+	}
 	
 	public static boolean testIntersection(Shape shapeA, Shape shapeB) {
 	   Area areaA = new Area(shapeA);
